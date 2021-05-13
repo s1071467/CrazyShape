@@ -20,18 +20,19 @@ class GameActivity : AppCompatActivity(),View.OnClickListener,View.OnTouchListen
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
         btnBack.setOnClickListener(this)
+        btn.setOnClickListener(this)
         handv.setOnTouchListener(this)
     }
-
-    override fun onClick(v: View) {
-        if(v.id.equals(btnBack)){
-            intent = Intent(this@GameActivity, MainActivity::class.java)
-            startActivity(intent)
-        }else if(v.id.equals(btn)){
+override fun onClick(v: View) {
+        if(v.id.equals(R.id.btnBack)){
+            finish()
+        }else{
             handv.path.reset()
             handv.invalidate()
         }
     }
+
+
 
     override fun onTouch(p0: View?, event: MotionEvent): Boolean {
         var xPos = event.getX()
@@ -81,5 +82,7 @@ class GameActivity : AppCompatActivity(),View.OnClickListener,View.OnTouchListen
         Toast.makeText(this, Result, Toast.LENGTH_SHORT).show()
     }
 
-    }
+
+
+}
 
