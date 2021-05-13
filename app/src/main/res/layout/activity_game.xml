@@ -29,7 +29,7 @@
     <tw.edu.pu.s410714671.crazyshape.HandPaint
         android:id="@+id/handv"
         android:layout_width="match_parent"
-        android:layout_height="606dp" />
+        android:layout_height="match_parent" />
 
 
 
