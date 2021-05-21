@@ -15,13 +15,18 @@ import tw.edu.pu.s410714671.crazyshape.ml.Shapes
 
 
 class GameActivity : AppCompatActivity(),View.OnClickListener,View.OnTouchListener {
-
+    //var P : String=intent.getStringExtra("picture",imgNext.drawable.toString())
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
+        intent = getIntent()
+        //var P : String=intent.getStringExtra("picture",imgNext.drawable.toString())
         btnBack.setOnClickListener(this)
         btn.setOnClickListener(this)
         handv.setOnTouchListener(this)
+        txvMsg.setText("請畫出正方形")
+        btnBack.isEnabled=false
     }
 override fun onClick(v: View) {
         if(v.id.equals(R.id.btnBack)){
@@ -75,6 +80,14 @@ override fun onClick(v: View) {
             "star" -> Result = "星形"
             "triangle" -> Result = "三角形"
         }
+        if(Result!="方形"){
+            Toast.makeText(this, "您畫的是"+Result+"請再試試看喔!", Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(this, "恭喜順利通關!", Toast.LENGTH_SHORT).show()
+            btnBack.isEnabled=true
+        }
+
+
         Result += ": " + String.format("%.1f%%", outputs[0].score * 100.0f)
 
         // Releases model resources if no longer used.
